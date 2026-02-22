@@ -37,7 +37,7 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,5) RC(4,6) RC(3,6) RC(3,7) 
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
 
-        diode-direction = "row2col";
+        diode-direction = "col2row";
         col-gpios
             = <&pro_micro 14 GPIO_ACTIVE_HIGH>   /* col 0 = P0.31 (A0) */
             , <&pro_micro 15 GPIO_ACTIVE_HIGH>   /* col 1 = P0.29 (A1) */
