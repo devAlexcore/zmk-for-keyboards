@@ -39,27 +39,25 @@ kscan0: kscan {
 
     diode-direction = "row2col"; 
 
-    /* COLUMNAS (Inputs) */
-    /* Reordenamos según tu test: El pin 16 era el que te daba el '4', 
-       vamos a moverlo para que sea la columna lógica correcta. */
+    /* COLUMNAS (Inputs con Pull-down) */
+    /* Invertimos el orden para corregir el sentido Derecha -> Izquierda */
     col-gpios
-        = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 0: Probamos con Pin 10 */
-        , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 1 */
-        , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 2 */
-        , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 3 */
-        , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 4 */
-        , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 5 */
+        = <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Ahora es Col 0 */
+        , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Ahora es Col 1 */
+        , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Ahora es Col 2 */
+        , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Ahora es Col 3 */
+        , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Ahora es Col 4 */
+        , <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Ahora es Col 5 */
         ;
 
     /* FILAS (Outputs) */
-    /* Según tu test, el Pin 9 te daba el '1'. Lo ponemos como Fila 0 
-       para que coincida con la línea de números en el keymap. */
+    /* Invertimos el orden para que el '1' suba a la Fila 0 */
     row-gpios
-        = <&pro_micro 9 GPIO_ACTIVE_HIGH>  /* Row 0 (Números) */
-        , <&pro_micro 8 GPIO_ACTIVE_HIGH>  /* Row 1 (QWERTY) */
-        , <&pro_micro 7 GPIO_ACTIVE_HIGH>  /* Row 2 (ASDF) */
-        , <&pro_micro 6 GPIO_ACTIVE_HIGH>  /* Row 3 (ZXCV) */
-        , <&pro_micro 5 GPIO_ACTIVE_HIGH>  /* Row 4 (Thumbs) */
+        = <&pro_micro 9 GPIO_ACTIVE_HIGH>  /* Fila 0 (Números) */
+        , <&pro_micro 8 GPIO_ACTIVE_HIGH>  /* Fila 1 (Q, W, F, P, G...) */
+        , <&pro_micro 7 GPIO_ACTIVE_HIGH>  /* Fila 2 (A, R, S, T, D...) */
+        , <&pro_micro 6 GPIO_ACTIVE_HIGH>  /* Fila 3 (Z, X, C, V, B...) */
+        , <&pro_micro 5 GPIO_ACTIVE_HIGH>  /* Fila 4 (Pulgares) */
         ;
 };
 
