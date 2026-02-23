@@ -40,20 +40,16 @@ kscan0: kscan {
     diode-direction = "row2col"; 
 
     /* COLUMNAS (Inputs con Pull-down) */
-    /* Invertimos el orden: el pin 19 pasa a ser el primero para que 
-       el 'enter' se mueva al extremo derecho y el '4' al centro. */
     col-gpios
-        = <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 0 */
-        , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 1 */
-        , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 2 */
-        , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 3 */
-        , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 4 */
-        , <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 5 (Prueba 1 si no sirve) */
+        = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 0 (era Col 5) */
+        , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 1 (era Col 4) */
+        , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 2 (era Col 3) */
+        , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 3 (era Col 2) */
+        , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 4 (era Col 1) */
+        , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 5 (era Col 0) */
         ;
 
     /* FILAS (Outputs) */
-    /* Invertimos el orden: el pin 9 (que te dio el '1') ahora es la Row 0. 
-       El pin 5 (que te dio el '4') ahora es la Row 3. */
     row-gpios
         = <&pro_micro 9 GPIO_ACTIVE_HIGH>  /* Row 0 (Números) */
         , <&pro_micro 8 GPIO_ACTIVE_HIGH>  /* Row 1 */
