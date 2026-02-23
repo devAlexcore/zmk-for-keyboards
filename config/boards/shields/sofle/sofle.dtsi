@@ -39,23 +39,25 @@ kscan0: kscan {
 
     diode-direction = "row2col"; 
 
-    // En ROW2COL, las COLUMNAS son las entradas (Inputs)
+    /* COLUMNAS (Inputs con Pull-down) */
+    /* Según tu test, los pines 16, 14, 15, 18, 19 son los que agrupan las letras */
     col-gpios
-        = <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        = <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* Col 0 (Parece fallar o estar desconectada) */
+        , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Col 1 */
+        , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Col 2 */
+        , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Col 3 */
+        , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Col 4 */
+        , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Col 5 */
         ;
 
-    // En ROW2COL, las FILAS son las salidas (Outputs)
+    /* FILAS (Outputs) */
+    /* Reordenamos para que el pin 5 sea el que el sistema asocia con la fila de números */
     row-gpios
-        = <&pro_micro 5 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 6 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 7 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 8 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 9 GPIO_ACTIVE_HIGH>
+        = <&pro_micro 5 GPIO_ACTIVE_HIGH>  /* Ahora es Fila 0 (Números) */
+        , <&pro_micro 6 GPIO_ACTIVE_HIGH>  /* Ahora es Fila 1 (QWERTY...) */
+        , <&pro_micro 7 GPIO_ACTIVE_HIGH>  /* Ahora es Fila 2 (ASDF...) */
+        , <&pro_micro 8 GPIO_ACTIVE_HIGH>  /* Ahora es Fila 3 (ZXCV...) */
+        , <&pro_micro 9 GPIO_ACTIVE_HIGH>  /* Ahora es Fila 4 (Thumbs) */
         ;
 };
 
