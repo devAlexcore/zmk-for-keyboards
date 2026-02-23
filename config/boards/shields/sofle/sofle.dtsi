@@ -38,7 +38,7 @@ kscan0: kscan {
     wakeup-source;
 
     // Los diodos en la V1 suelen ser col2row (raya hacia la fila)
-    diode-direction = "col2row"; 
+    diode-direction = "row2col"; 
 
     // ORDEN PARA SOFLE V1: De izquierda a derecha (Lado izquierdo)
     col-gpios
