@@ -39,25 +39,27 @@ kscan0: kscan {
 
     diode-direction = "row2col"; 
 
-    /* AHORA LAS FILAS SON LAS ENTRADAS (Pulls) */
-    /* Usamos los pines que antes te daban (4, p, t, v, enter) como columnas */
+    /* COLUMNAS (Inputs) */
+    /* Reordenamos según tu test: El pin 16 era el que te daba el '4', 
+       vamos a moverlo para que sea la columna lógica correcta. */
     col-gpios
-        = <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 0: Probamos con Pin 10 */
+        , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 1 */
+        , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 2 */
+        , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 3 */
+        , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 4 */
+        , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Col 5 */
         ;
 
-    /* AHORA LAS COLUMNAS SON LAS SALIDAS */
-    /* Usamos los pines que antes te daban (4, 3, w, 1) como filas */
+    /* FILAS (Outputs) */
+    /* Según tu test, el Pin 9 te daba el '1'. Lo ponemos como Fila 0 
+       para que coincida con la línea de números en el keymap. */
     row-gpios
-        = <&pro_micro 1 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 16 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 14 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 15 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 18 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 19 GPIO_ACTIVE_HIGH>
+        = <&pro_micro 9 GPIO_ACTIVE_HIGH>  /* Row 0 (Números) */
+        , <&pro_micro 8 GPIO_ACTIVE_HIGH>  /* Row 1 (QWERTY) */
+        , <&pro_micro 7 GPIO_ACTIVE_HIGH>  /* Row 2 (ASDF) */
+        , <&pro_micro 6 GPIO_ACTIVE_HIGH>  /* Row 3 (ZXCV) */
+        , <&pro_micro 5 GPIO_ACTIVE_HIGH>  /* Row 4 (Thumbs) */
         ;
 };
 
