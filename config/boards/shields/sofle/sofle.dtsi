@@ -33,25 +33,28 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,5) RC(4,6) RC(3,6) RC(3,7) 
         >;
     };
 
-    kscan0: kscan {
+kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
 
-        diode-direction = "col2row";
+        diode-direction = "row2col"; // Si esto no funciona, cámbialo a "row2col"
+        
+        // INTERCAMBIA LAS LISTAS SI EL ORDEN SIGUE MAL
         col-gpios
-            = <&pro_micro 14 GPIO_ACTIVE_HIGH>   /* col 0 = P0.31 (A0) */
-            , <&pro_micro 15 GPIO_ACTIVE_HIGH>   /* col 1 = P0.29 (A1) */
-            , <&pro_micro 16 GPIO_ACTIVE_HIGH>   /* col 2 = P0.02 (A2) */
-            , <&pro_micro 18 GPIO_ACTIVE_HIGH>   /* col 3 = P1.15 (A4) */
-            , <&pro_micro 17 GPIO_ACTIVE_HIGH>   /* col 4 = P1.13 (A3) */
-            , <&pro_micro 19 GPIO_ACTIVE_HIGH>   /* col 5 = P1.11 (A5) */
+            = <&pro_micro 19 GPIO_ACTIVE_HIGH>   /* Col 5 */
+            , <&pro_micro 18 GPIO_ACTIVE_HIGH>   /* Col 4 */
+            , <&pro_micro 15 GPIO_ACTIVE_HIGH>   /* Col 3 */
+            , <&pro_micro 14 GPIO_ACTIVE_HIGH>   /* Col 2 */
+            , <&pro_micro 16 GPIO_ACTIVE_HIGH>   /* Col 1 */
+            , <&pro_micro 1 GPIO_ACTIVE_HIGH>    /* Col 0 */
             ;
+
         row-gpios
-            = <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* row 0 = P0.22 (D5) */
-            , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* row 1 = P0.24 (D6) */
-            , <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* row 2 = P1.00 (D7) */
-            , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* row 3 = P0.11 (D8) */
-            , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* row 4 = P1.04 (D9) */
+            = <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
 
