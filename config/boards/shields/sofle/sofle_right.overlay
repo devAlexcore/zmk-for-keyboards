@@ -1,35 +1,9 @@
-/*
- * Copyright (c) 2020 Ryan Cross
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include "sofle.dtsi"
 
-&default_transform {
-    col-offset = <6>;
-};
-
 &kscan0 {
-    col-gpios
-        = <&pro_micro 1  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* col 0 ← cambio aquí */
-        , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* col 1 */
-        , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* col 2 */
-        , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* col 3 */
-        , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* col 4 */
-        , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* col 5 */
-        ;
+    // Al no definir col-gpios aquí, usará los del dtsi que corregimos arriba.
 };
 
-&right_encoder {
+&rigt_encoder {
     status = "okay";
-};
-/ {
-    chosen {
-      zmk,battery = &vbatt;
-    };
-
-    vbatt: vbatt {
-        compatible = "zmk,battery-nrf-vddh";
-    };
 };
