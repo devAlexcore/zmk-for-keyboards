@@ -4,6 +4,6 @@
     // Al no definir col-gpios aquí, usará los del dtsi que corregimos arriba.
 };
 
-&rigt_encoder {
+&right_encoder {
     status = "okay";
 };
